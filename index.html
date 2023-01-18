@@ -39,7 +39,7 @@
                 <i class="fa-regular fa-envelope fa-flip fa-2xl "></i>
                 <span> Charge e-mail addresses....</span>
             </div>
-            <ul v-show = "emailAddressNumber === emailAddresses.length" class="list-group text-center fw-bold">
+            <ul v-show = "emailAddressNumber === emailAddresses.length" class="list-group text-center fw-bold border border-dark">
                 <li v-for="(emailaddress,i) in emailAddresses" class="list-group-item border border-dark">{{ emailaddress }}</li>
             </ul>
         </div>
