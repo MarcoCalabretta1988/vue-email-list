@@ -21,8 +21,24 @@ const app = Vue.createApp({
     name: 'E-mail list',
     data(){
         return {
+         emailAddresses: [],
+         apiUri : 'https://flynn.boolean.careers/exercises/api/random/mail',
+         emailAddressNumber : 10,
 
         }
+    },
+    methods : {
+
+       getEmailList(){
+          for(let i = 0 ; i < this.emailAddressNumber ; i++){
+            axios.get(this.apiUri).then( response =>{
+              this.emailAddresses.push(response.data.response);
+            })
+          }
+       }
+    },
+    mounted(){
+        this.getEmailList();
     }
 })
 

@@ -27,7 +27,7 @@
 <body>
     <div id="root" class="container my-5">
         <ul class="list-group">
-            <li class="list-group-item">An item</li>
+            <li v-for="(emailaddress,i) in emailAddresses" class="list-group-item">{{ emailaddress }}</li>
           </ul>
     </div>
 </body>
