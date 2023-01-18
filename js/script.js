@@ -25,22 +25,19 @@ const app = Vue.createApp({
          apiUri : 'https://flynn.boolean.careers/exercises/api/random/mail',
          emailAddressNumber : 10,
          errorMessage : '',
-         isLoading : false,
         }
     },
     methods : {
 
        getEmailList(){
-           for(let i = 0 ; i < this.emailAddressNumber ; i++){
-               this.isLoading = true;
-               axios.get(this.apiUri).then( response =>{
+          //Crea un array di mail casuali prese dqal server
+          for(let i = 0 ; i < this.emailAddressNumber ; i++){
+              axios.get(this.apiUri).then( response =>{
               this.emailAddresses.push(response.data.response)
               
             }).catch(error =>{
                 this.errorMessage = error.message;
-            }).then(()=>{
-                this.isLoading = false;
-            });
+            })
         }
         
     }

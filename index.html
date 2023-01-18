@@ -29,13 +29,9 @@
 </head>
 <body>
     <div id="root" class="container my-5">
-        <div v-if="isLoading" class="text-white text-center fs-1"> 
-            <i class="fa-solid fa-cog fa-spin fa-2xl"></i>
-            <span> Loading Data from server....</span>
-        </div>
-        <div v-if="errorMessage && !isLoading" class="alert alert-danger text-center fw-bold"> <i class="fa-solid fa-triangle-exclamation fa-2xl fa-shake"></i> {{ errorMessage }}</div>
+        <div v-if="errorMessage && emailAddressNumber !== emailAddresses.length" class="alert alert-danger text-center fw-bold"> <i class="fa-solid fa-triangle-exclamation fa-2xl fa-shake"></i> {{ errorMessage }}</div>
         <div v-else>
-            <div v-if=" !isLoading && emailAddressNumber !== emailAddresses.length" class="text-center fs-1 text-white"> 
+            <div v-if=" emailAddressNumber !== emailAddresses.length" class="text-center fs-1 text-white"> 
                 <i class="fa-regular fa-envelope fa-flip fa-2xl "></i>
                 <span> Charge e-mail addresses....</span>
             </div>
