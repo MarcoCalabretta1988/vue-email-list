@@ -8,6 +8,9 @@
     <meta name="description" content="Vue email list">
     <link rel="icon" href="img/email-icon.ico">
     <title>Vue Email-list</title>
+    
+    <!-- FONTAWSOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- BOOTSTRAP -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
@@ -26,9 +29,20 @@
 </head>
 <body>
     <div id="root" class="container my-5">
-        <ul class="list-group">
-            <li v-for="(emailaddress,i) in emailAddresses" class="list-group-item">{{ emailaddress }}</li>
-          </ul>
+        <div v-if="isLoading" class="text-white text-center fs-1"> 
+            <i class="fa-solid fa-cog fa-spin fa-2xl"></i>
+            <span> Loading Data from server....</span>
+        </div>
+        <div v-if="errorMessage && !isLoading" class="alert alert-danger text-center fw-bold"> <i class="fa-solid fa-triangle-exclamation fa-2xl fa-shake"></i> {{ errorMessage }}</div>
+        <div v-else>
+            <div v-if=" !isLoading && emailAddressNumber !== emailAddresses.length" class="text-center fs-1 text-white"> 
+                <i class="fa-regular fa-envelope fa-flip fa-2xl "></i>
+                <span> Charge e-mail addresses....</span>
+            </div>
+            <ul v-show = "emailAddressNumber === emailAddresses.length" class="list-group text-center fw-bold">
+                <li v-for="(emailaddress,i) in emailAddresses" class="list-group-item border border-dark">{{ emailaddress }}</li>
+            </ul>
+        </div>
     </div>
 </body>
 </html>
